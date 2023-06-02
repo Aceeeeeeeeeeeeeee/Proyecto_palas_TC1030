@@ -30,8 +30,9 @@ class Pala {
         //Declaro atributos de instancia
         int id;
         string nombre;
-        double peso;
-        string tipo;
+        string gama;
+        float peso;
+        float calidad;
 
     public:
 
@@ -40,24 +41,35 @@ class Pala {
             
             id = 0;
             nombre = "";
+            gama = "";
             peso = 0.0;
-            tipo = "";
+            calidad = 0.0;
 
         }
 
         //Declaro constructor que recibe valores
-        Pala(int i, string nom, float pes, string tip){
+        Pala(int i, string nom, string gam, float pes, float cal){
 
             id = i;
             nombre = nom;
+            gama = gam;
             peso = pes;
-            tipo = tip;
+            calidad = cal;
 
         }
 
 
         //Declaro metodos
+        string get_gama(){
+            return gama;
+        }
+
+        float get_peso(){
+            return peso;
+        }
+
         virtual float costo() = 0;
+
         virtual string to_string() = 0;
 
 };
@@ -73,11 +85,8 @@ class AltaGama: public Pala {
 
     private:
 
-        //Declaro atributos de instancia
-        string material;
-        string forma;
+        //Declaro atributo de instancia
         float durabilidad;
-        float calidad;
 
     public:
 
@@ -86,24 +95,17 @@ class AltaGama: public Pala {
 
             id = 0;
             nombre = "";
+            gama = "Alta";
             peso = 0.0;
-            tipo = "";
-            material = "";
-            forma = "";
-            durabilidad = 0.0;
             calidad = 0.0;
-
+            durabilidad = 0.0;
         }
 
         //Declaro constructor que recibe valores
-        AltaGama(int i, string nom, float pes, string tip,
-        string mat, string form, float dur, float cal):
-        Pala(i, nom, pes, tip) {
+        AltaGama(int i, string nom, float pes, float cal,
+        float dur): Pala(i, nom, "Alta", pes, cal) {
 
-            material = mat;
-            forma = form;
             durabilidad = dur;
-            calidad = cal;
 
         }
 
@@ -141,11 +143,10 @@ string AltaGama::to_string() {
 
     stringstream aux;
     aux << "El id es " << id << " y su nombre es " << 
-    nombre << ", pesa " << peso << ", es una pala "
-    << tipo << ", es de " << material << ", su forma es "
-    << forma << ", su grado de durabilidad es " << 
-    durabilidad << " y su calidad es " << calidad << "\n"
-    << "El costo de la pala es: " << costo();
+    nombre <<", Es de gama " << gama << ", pesa " << peso 
+    << ", su calidad es " << calidad <<
+    " y su grado de durabilidad es " << durabilidad <<
+    "\n" << "El costo de la pala es: " << costo();
     return aux.str();
 
 }
@@ -162,8 +163,6 @@ class BajaGama: public Pala {
     private:
 
         //Declaro atributos de instancia
-        string material;
-        float calidad;
         float desvalance;
 
     public:
@@ -173,21 +172,17 @@ class BajaGama: public Pala {
 
             id = 0;
             nombre = "";
+            gama = "Alta";
             peso = 0.0;
-            tipo = "";
-            material = "";
             calidad = 0.0;
             desvalance = 0.0;
 
         }
 
         //Declaro constructor que recibe valores
-        BajaGama(int i, string nom, float pes, string tip,
-        string mat, float cal, float des): Pala(i, nom, 
-        pes, tip) {
+        BajaGama(int i, string nom, float pes, float cal,
+        float des): Pala(i, nom, "Baja", pes, cal) {
 
-            material = mat;
-            calidad = cal;
             desvalance = des;
 
         }
@@ -225,8 +220,7 @@ string BajaGama::to_string() {
 
     stringstream aux;
     aux << "El id es " << id << " y su nombre es " << 
-    nombre << ", pesa " << peso << ", es una pala "
-    << tipo << ", es de " << material << ", su forma es "
+    nombre <<", Es de gama " << gama << ", pesa " << peso 
     << ", su calidad es " << calidad << 
     " y su desvalance es " << desvalance << "\n"
     << "El costo de la pala es: " << costo();
