@@ -37,15 +37,15 @@ class Catalogo {
         Catalogo(): id(0) {};
 
         void crea_ejemplos();
-        void agrega_gama_alta(string nombre, float peso,
-        float calidad, float durabilidad);
-        void agrega_gama_baja(string nombre, float peso,
-        float calidad, float desvalance);
+        void agrega_gama_alta(string nombre, double peso,
+        double calidad, double durabilidad);
+        void agrega_gama_baja(string nombre, double peso,
+        double calidad, double desvalance);
         void muestra_palas();
         void muestra_palas(string gama);
-        void muestra_palas(float peso);
-        float calcula_costo_palas();
-        float calcula_costo_palas(string gama);
+        void muestra_palas(double peso);
+        void calcula_costo_palas();
+        void calcula_costo_palas(string gama);
 
 };
 
@@ -55,14 +55,14 @@ void Catalogo::crea_ejemplos() {
     cat[id] = new AltaGama (id, "Alta default", 400, 1005, 50);
     id++;
 
-    cat[id] = new AltaGama (id, "Baja default", 400, 105, 2);
+    cat[id] = new BajaGama (id, "Baja default", 400, 105, 2);
     id++;
 
 }
 
 
-void Catalogo::agrega_gama_alta(string nombre, float peso,
-float calidad, float durabilidad) {
+void Catalogo::agrega_gama_alta(string nombre, double peso,
+double calidad, double durabilidad) {
 
     cat[id] = new AltaGama(id, nombre, peso, calidad, 
     durabilidad);
@@ -71,8 +71,8 @@ float calidad, float durabilidad) {
 }
 
 
-void Catalogo::agrega_gama_baja(string nombre, float peso,
-float calidad, float desvalance) {
+void Catalogo::agrega_gama_baja(string nombre, double peso,
+double calidad, double desvalance) {
 
     cat[id] = new BajaGama(id, nombre, peso, calidad, 
     desvalance);
@@ -104,7 +104,7 @@ void Catalogo::muestra_palas(string gama) {
 }
 
 
-void Catalogo::muestra_palas(float peso) {
+void Catalogo::muestra_palas(double peso) {
 
     for(int i = 0; i < id; i++) {
 
@@ -117,22 +117,24 @@ void Catalogo::muestra_palas(float peso) {
 }
 
 
-float Catalogo::calcula_costo_palas() {
+void Catalogo::calcula_costo_palas() {
 
-    float total = 0;
-    for(int i = 0; i < id; i++){
+    double total = 0.0;
+    for(int i = 0; i < id; i++) {
 
         total = total + cat[i] -> costo();
+
     }
 
-    return total;
+    cout << "El costo de todas las palas es: " <<
+    total << endl;
 
 }
 
 
-float Catalogo::calcula_costo_palas(string gama) {
+void Catalogo::calcula_costo_palas(string gama) {
 
-    float total = 0;
+    double total = 0.0;
     for(int i = 0; i < id; i++){
 
         if (cat[i] -> get_gama() == gama) {
@@ -141,7 +143,8 @@ float Catalogo::calcula_costo_palas(string gama) {
         }
     }
     
-    return total;
+    cout << "El costo de las palas de gama " <<
+    " es de: " << total << endl;
 
 }
 

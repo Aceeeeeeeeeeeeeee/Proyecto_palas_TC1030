@@ -51,10 +51,12 @@ int main() {
 
     string temp_nombre, temp_gama;
     
-    float temp_peso, temp_calidad, temp_durabilidad,
+    double temp_peso, temp_calidad, temp_durabilidad,
     temp_desvalance;
 
     while(opcion < 8 && opcion > -1) {
+
+        menu();
 
         cout << "¿Que desea realizar? ";
         cin >> opcion;
@@ -88,7 +90,7 @@ int main() {
                 cout << "\nIngresa el desvalance de la pala: ";
                 cin >> temp_desvalance;
 
-                catalogo.agrega_gama_alta(temp_nombre,
+                catalogo.agrega_gama_baja(temp_nombre,
                 temp_peso, temp_calidad, temp_desvalance);
 
                 break;
@@ -112,7 +114,7 @@ int main() {
 
                 }
 
-                else if (opt == 2) {
+                else { if(opt == 2) {
 
                     temp_gama = "Baja";
 
@@ -122,6 +124,7 @@ int main() {
 
                     break;
 
+                }
                 }
 
                 catalogo.muestra_palas(temp_gama);
@@ -158,7 +161,7 @@ int main() {
 
                 }
 
-                else if (opt == 2) {
+                else { if (opt == 2) {
 
                     temp_gama = "Baja";
 
@@ -168,6 +171,7 @@ int main() {
 
                     break;
 
+                }
                 }
 
                 catalogo.calcula_costo_palas(temp_gama);

@@ -31,8 +31,8 @@ class Pala {
         int id;
         string nombre;
         string gama;
-        float peso;
-        float calidad;
+        double peso;
+        double calidad;
 
     public:
 
@@ -48,7 +48,7 @@ class Pala {
         }
 
         //Declaro constructor que recibe valores
-        Pala(int i, string nom, string gam, float pes, float cal){
+        Pala(int i, string nom, string gam, double pes, double cal){
 
             id = i;
             nombre = nom;
@@ -64,11 +64,11 @@ class Pala {
             return gama;
         }
 
-        float get_peso(){
+        double get_peso(){
             return peso;
         }
 
-        virtual float costo() = 0;
+        virtual double costo() = 0;
 
         virtual string to_string() = 0;
 
@@ -86,7 +86,7 @@ class AltaGama: public Pala {
     private:
 
         //Declaro atributo de instancia
-        float durabilidad;
+        double durabilidad;
 
     public:
 
@@ -102,15 +102,15 @@ class AltaGama: public Pala {
         }
 
         //Declaro constructor que recibe valores
-        AltaGama(int i, string nom, float pes, float cal,
-        float dur): Pala(i, nom, "Alta", pes, cal) {
+        AltaGama(int i, string nom, double pes, double cal,
+        double dur): Pala(i, nom, "Alta", pes, cal) {
 
             durabilidad = dur;
 
         }
 
         //Declaro metodos
-        float costo();
+        double costo();
         string to_string();
 
 };
@@ -123,9 +123,9 @@ class AltaGama: public Pala {
  * @param
  * @return double costo de una pala de alta gama
 */
-float AltaGama::costo() {
+double AltaGama::costo() {
 
-    float cost_alt;
+    double cost_alt;
     cost_alt = (durabilidad + calidad) * peso;
     return cost_alt;
 
@@ -163,7 +163,7 @@ class BajaGama: public Pala {
     private:
 
         //Declaro atributos de instancia
-        float desvalance;
+        double desvalance;
 
     public:
 
@@ -172,7 +172,7 @@ class BajaGama: public Pala {
 
             id = 0;
             nombre = "";
-            gama = "Alta";
+            gama = "Baja";
             peso = 0.0;
             calidad = 0.0;
             desvalance = 0.0;
@@ -180,15 +180,15 @@ class BajaGama: public Pala {
         }
 
         //Declaro constructor que recibe valores
-        BajaGama(int i, string nom, float pes, float cal,
-        float des): Pala(i, nom, "Baja", pes, cal) {
+        BajaGama(int i, string nom, double pes, double cal,
+        double des): Pala(i, nom, "Baja", pes, cal) {
 
             desvalance = des;
 
         }
 
         //Declaro metodos
-        float costo();
+        double costo();
         string to_string();
 
 };
@@ -200,9 +200,9 @@ class BajaGama: public Pala {
  * @param
  * @return double costo de una pala de baja gama
 */
-float BajaGama::costo() {
+double BajaGama::costo() {
 
-    float cost_baj;
+    double cost_baj;
     cost_baj = ((calidad * peso) - 500)/desvalance;
     return cost_baj;
 
