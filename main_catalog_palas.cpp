@@ -30,7 +30,7 @@ void  menu() {
     cout << "4. Muesta ciertas palas de acuerdo" <<
     " a su gama\n";
     cout << "5. Muesta ciertas palas de acuerdo" <<
-    " a un costo maximo\n";
+    " a su peso\n";
     cout << "6. Calcula el costo de todas las" <<
     " palas\n";
     cout << "7. Calcula el costo de todas las" <<
@@ -46,6 +46,8 @@ int main() {
     catalogo.crea_ejemplos();
 
     int opcion = 0;
+
+    int opt = 0;
 
     string temp_nombre, temp_gama;
     
@@ -99,14 +101,79 @@ int main() {
 
             case 4:
 
-                cout >> "Ingresa A";
+                cout << "Ingresa 1 si quieres mostrar todas"
+                << " de gama alta y 2 si quieres mostrar las"
+                << " de gama baja: ";
+                cin >> opt;
+
+                if(opt == 1) {
+
+                    temp_gama = "Alta";
+
+                }
+
+                else if (opt == 2) {
+
+                    temp_gama = "Baja";
+
+                }
+
+                else {
+
+                    break;
+
+                }
+
+                catalogo.muestra_palas(temp_gama);
+
+                break;
+
+            case 5:
+
+                cout << "Ingresa el peso maximo de las palas"
+                << " que quieres que se muestren: ";
+                cin >> temp_peso;
+
+                catalogo.muestra_palas(temp_peso);
+
+                break;
+
+            case 6:
+
+                catalogo.calcula_costo_palas();
+
+                break;
+
+            case 7:
+
+                cout << "Ingresa 1 si quieres calcular el"
+                << " costo de todas las palas de gama alta"
+                << " y 2 si quieres caluclar el costo de"
+                << " las de gama baja: ";
+                cin >> opt;
+
+                if(opt == 1) {
+
+                    temp_gama = "Alta";
+
+                }
+
+                else if (opt == 2) {
+
+                    temp_gama = "Baja";
+
+                }
+
+                else {
+
+                    break;
+
+                }
+
+                catalogo.calcula_costo_palas(temp_gama);
+
+                break;
     
         }
     }
-
-    BajaGama pala_wilson(temp_id, temp_nombre, temp_peso,
-    temp_tipo, temp_material, temp_calidad, temp_desvalance);
-
-    cout << pala_wilson.to_string();
-    
 }
