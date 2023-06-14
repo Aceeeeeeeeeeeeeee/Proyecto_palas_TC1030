@@ -1,5 +1,7 @@
 # Proyecto_palas_TC1030
 
+Diego Acevedo Ortega A01276068
+
 Este proyecto es para la materia TC1030 programación orientada a objetos, este proyecto consiste en un catalogo de palas de pádel el cual funciona con una estructura de clases. En este programa puedes agregar palas, puedes hacer que te muestre todo el catalogo y puedes puedes pedir que te muestre el costo de cierto número de palas. De acuerdo a sus características se calculan sus precios.
 
 ## Funcionalidad
@@ -21,3 +23,20 @@ compilar con: "g++ catalogo.h pala.h main_catalog_palas.cpp"
 correr en windows: "a.exe" 
 
 correr en windows: "a.exe"
+
+## Correcciones
+
+Se agregaron los casos en los que el programa no funciona.
+
+En el UML se definieron bien todas las funciones y atributos y se espesifico cuales son las clases abstractas.
+
+Se agrego sobrecarga.
+
+Se implemento de manera correcta los modificadores de acceso.
+
+Se implemento de manera correcta el consepto de clases abstractas.
+
+Corregí el error que hacia que se loopeara el código al agregar alguna pala.
+
+
+
