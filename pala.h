@@ -22,7 +22,7 @@
 using namespace std;
 
 
-//Declaro la clase abstracta Palas
+//Definicion de la clase abstracta Pala
 class Pala {
 
     protected:
@@ -47,7 +47,18 @@ class Pala {
 
         }
 
-        //Declaro constructor que recibe valores
+        //Declaro constructor que recibe algunos valores
+        Pala(int i, string nom, string gam){
+
+            id = i;
+            nombre = nom;
+            gama = gam;
+            peso = 350.0;
+            calidad = 10.0;
+
+        }
+
+        //Declaro constructor que recibe todos valores
         Pala(int i, string nom, string gam, double pes, double cal){
 
             id = i;
@@ -60,14 +71,27 @@ class Pala {
 
 
         //Declaro metodos
+
+        /**
+        * getter gama
+        *
+        * @param
+        * @return string gama
+        */
         string get_gama(){
             return gama;
         }
 
+        /**
+        * getter peso
+        *
+        * @param
+        * @return double peso
+        */
         double get_peso(){
             return peso;
         }
-
+        
         virtual double costo() = 0;
 
         virtual string to_string() = 0;
@@ -76,11 +100,10 @@ class Pala {
 
 
 /*
-*Clase Alta Gama que hereda de la Clase Pala,
-*esta contiene los atributos y metodos para una Pala.
+*Clase Alta Gama que hereda de la Clase Pala
 */
 
-//Declaro clase Alta Gama que hereda Pala
+//Declaro clase Alta Gama
 class AltaGama: public Pala {
 
     private:
@@ -101,7 +124,14 @@ class AltaGama: public Pala {
             durabilidad = 0.0;
         }
 
-        //Declaro constructor que recibe valores
+        //Declaro constructor que recibe algunos valores
+        AltaGama(int i, string nom): Pala(i, nom, "Alta") {
+
+            durabilidad = 50.0;
+
+        }
+
+        //Declaro constructor que recibe todos valores
         AltaGama(int i, string nom, double pes, double cal,
         double dur): Pala(i, nom, "Alta", pes, cal) {
 
@@ -121,7 +151,7 @@ class AltaGama: public Pala {
  * y su calidad
  *
  * @param
- * @return double costo de una pala de alta gama
+ * @return double con costo de una pala de alta gama
 */
 double AltaGama::costo() {
 
@@ -146,18 +176,17 @@ string AltaGama::to_string() {
     nombre <<", Es de gama " << gama << ", pesa " << peso 
     << ", su calidad es " << calidad <<
     " y su grado de durabilidad es " << durabilidad <<
-    "\n" << "El costo de la pala es: " << costo();
+    "\n" << "El costo de la pala es: " << costo() <<
+    "\n";
     return aux.str();
 
 }
 
 
 /*
-*Clase Baja Gama que hereda de la Clase Pala,
-*esta contiene los atributos y metodos para una Pala.
+*Clase Baja Gama que hereda de la Clase Pala
 */
 
-//Declaro clase Baja Gama que hereda Pala
 class BajaGama: public Pala {
 
     private:
@@ -179,7 +208,14 @@ class BajaGama: public Pala {
 
         }
 
-        //Declaro constructor que recibe valores
+        //Declaro constructor que recibe algunos valores
+        BajaGama(int i, string nom): Pala(i, nom, "Baja") {
+
+            desvalance = 10.0;
+
+        }
+
+        //Declaro constructor que recibe todos valores
         BajaGama(int i, string nom, double pes, double cal,
         double des): Pala(i, nom, "Baja", pes, cal) {
 
@@ -195,15 +231,16 @@ class BajaGama: public Pala {
 
 /**
  * Metodo que calcula el costo de una pala de baja 
- * gama, tomando en cuenta su peso y su calidad
+ * gama, tomando en cuenta su peso, su desvalance y
+ * su calidad
  *
  * @param
- * @return double costo de una pala de baja gama
+ * @return double con costo de una pala de baja gama
 */
 double BajaGama::costo() {
 
     double cost_baj;
-    cost_baj = ((calidad * peso) - 500)/desvalance;
+    cost_baj = (calidad * peso)/desvalance;
     return cost_baj;
 
 }
@@ -213,7 +250,7 @@ double BajaGama::costo() {
  * en una cadena de texto.
  *
  * @param
- * @return string con los datos de la pala de alta
+ * @return string con los datos de la pala de baja
  * gama
 */
 string BajaGama::to_string() {
@@ -223,7 +260,7 @@ string BajaGama::to_string() {
     nombre <<", Es de gama " << gama << ", pesa " << peso 
     << ", su calidad es " << calidad << 
     " y su desvalance es " << desvalance << "\n"
-    << "El costo de la pala es: " << costo();
+    << "El costo de la pala es: " << costo() << "\n";
     return aux.str();
 
 }

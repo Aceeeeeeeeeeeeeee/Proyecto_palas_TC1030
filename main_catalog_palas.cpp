@@ -7,8 +7,8 @@
 
 /*
 *Este es el main del programa catalogo de palas, el
-*cual te permite crear palas de acuerdo a su gama
-*calculando sus costos
+*cual te permite crear palas de acuerdo a su gama,
+*calcular sus costos y mostrar las palas del catalogo
 */
 
 //Bibliotecas
@@ -20,7 +20,7 @@ using namespace std;
 #include "catalogo.h"
 #include "pala.h"
 
-
+//funcion que imprime el menu
 void  menu() {
 
     cout << "\nMENU:\n\n";
@@ -42,27 +42,36 @@ void  menu() {
 
 int main() {
 
+    //creacion del objeto catalogo
     Catalogo catalogo;
+
+    //creacion de un objeto de cada clase 
     catalogo.crea_ejemplos();
 
     int opcion = 0;
 
     int opt = 0;
 
+    //variables temporales
     string temp_nombre, temp_gama;
     
     double temp_peso, temp_calidad, temp_durabilidad,
     temp_desvalance;
 
+    //Ciclo para que siga corriendo el codigo hasta que
+    //el ususario elija salir.
     while(opcion < 8 && opcion > -1) {
 
+        //imprimir menu
         menu();
 
-        cout << "¿Que desea realizar? ";
+        cout << "Que desea realizar? ";
         cin >> opcion;
 
+        //switch que realiza metodo dependiendo de opcion
         switch(opcion) {
 
+            //caso 1 crea una pala de gama alta
             case 1:
 
                 cout << "\nIngresa el nombre de la pala: ";
@@ -79,6 +88,7 @@ int main() {
 
                 break;
 
+            //caso 2 crea una pala de gama baja
             case 2:
 
                 cout << "\nIngresa el nombre de la pala: ";
@@ -94,13 +104,15 @@ int main() {
                 temp_peso, temp_calidad, temp_desvalance);
 
                 break;
-            
+
+            //caso 3 muestra todas las palas
             case 3:
 
                 catalogo.muestra_palas();
 
                 break;
 
+            //caso 4 muestra palas por su gama
             case 4:
 
                 cout << "Ingresa 1 si quieres mostrar todas"
@@ -131,6 +143,7 @@ int main() {
 
                 break;
 
+            //caso 5 muestra palas por su peso
             case 5:
 
                 cout << "Ingresa el peso maximo de las palas"
@@ -141,12 +154,14 @@ int main() {
 
                 break;
 
+            //calcula costo de todas las palas
             case 6:
 
                 catalogo.calcula_costo_palas();
 
                 break;
 
+            //calcula costo de las palas por su gama
             case 7:
 
                 cout << "Ingresa 1 si quieres calcular el"
@@ -180,4 +195,7 @@ int main() {
     
         }
     }
+
+    return 0;
+
 }
