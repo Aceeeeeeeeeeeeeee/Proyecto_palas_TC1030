@@ -78,9 +78,11 @@ int main() {
                 cin >> temp_nombre;
                 cout << "\nIngresa el peso gramos: ";
                 cin >> temp_peso;
-                cout << "\nIngresa la calidad de la pala: ";
+                cout << "\nIngresa la calidad de la pala de "
+                << "forma numerica: ";
                 cin >> temp_calidad;
-                cout << "\nIngresa la durabilidad de la pala: ";
+                cout << "\nIngresa la durabilidad de la pala " 
+                << "de forma numerica: ";
                 cin >> temp_durabilidad;
 
                 catalogo.agrega_gama_alta(temp_nombre,
@@ -95,9 +97,11 @@ int main() {
                 cin >> temp_nombre;
                 cout << "\nIngresa el peso gramos: ";
                 cin >> temp_peso;
-                cout << "\nIngresa la calidad de la pala: ";
+                cout << "\nIngresa la calidad de la pala  de"
+                << " forma numerica: ";
                 cin >> temp_calidad;
-                cout << "\nIngresa el desvalance de la pala: ";
+                cout << "\nIngresa el desvalance de la pala "
+                << "de forma numerica: ";
                 cin >> temp_desvalance;
 
                 catalogo.agrega_gama_baja(temp_nombre,
