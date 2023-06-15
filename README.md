@@ -14,7 +14,7 @@ El progama cuenta con un menu para desarrollar las diferentes opciones.
 
 ## Consideraciones
 
-Es importante solo ingresar el tipo de dato que se te pide en cada una de las preguntas. 
+Es importante solo ingresar el tipo de dato que se te pide en cada una de las preguntas y en el caso de los strings no ocupar espacios. 
 
 El programa unicamente corre en la consola y fue hecho con c++ standard por lo que puede ser en todos los sistemas operativos.
 
