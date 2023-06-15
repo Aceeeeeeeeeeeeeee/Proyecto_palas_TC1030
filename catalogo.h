@@ -241,7 +241,7 @@ void Catalogo::calcula_costo_palas(string gama) {
     }
     
     cout << "El costo de las palas de gama " <<
-    " es de: " << total << endl;
+    gama << " es de: " << total << endl;
 
 }
 
